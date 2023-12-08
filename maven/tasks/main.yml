@@ -1,0 +1,12 @@
+- name: create a file task in main.yml
+  file:
+   path: /tmp/newtoday.txt
+   state: touch
+   
+- name: config users
+  include_tasks: configure-user.yml
+  when: action == "install"
+
+- name: install maven
+  include_tasks: install-maven.yml
+  when: action == "maven"
